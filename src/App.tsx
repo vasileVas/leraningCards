@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
 
 import Decks from './components/Decks';
+import logo from './logo.svg';
 
-class App extends Component {
-    render() {
+class App extends React.Component {
+    public render() {
         return (
             <div className="App">
                 <header className="App-header">
@@ -13,10 +13,10 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to
+                    To get started, edit <code>src/App.tsx</code> and save to
                     reload.
                 </p>
-                <Decks />
+                <Decks name="go ts" />
             </div>
         );
     }
