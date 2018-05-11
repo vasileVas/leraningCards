@@ -4,6 +4,9 @@
         "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
     },
     "rules": {
-        "interface-name": false
+        "interface-name": false,
+        "jsx-no-lambda": false,
+        "ordered-imports": false,
+        "jsx-boolean-value": false
     }
 }
