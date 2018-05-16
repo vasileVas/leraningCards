@@ -2,19 +2,17 @@ import * as React from 'react';
 import './App.css';
 
 import Decks from './components/Decks';
+import Header from './components/Header';
 
-import { BrowserRouter, Link, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 
 class App extends React.Component {
     public render() {
         return (
             <BrowserRouter>
-                <div className="App">
-                    <div className="header">
-                        <Link to="/decks">View all Decks</Link>
-                        <Link to="/decks/add">Add Deck</Link>
-                    </div>
-                    <Route path="/decks" component={Decks} />
+                <div className="container">
+                    <Header />
+                    <Route path="/decks" render={() => <Decks name="aaa" />} />
                     <Route
                         exact
                         path="/"
