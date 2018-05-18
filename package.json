@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "body-parser": "^1.18.3",
+        "concurrently": "^3.5.1",
         "express": "^4.16.3",
         "express-graphql": "^0.6.12",
         "graphql": "^0.13.2",
@@ -16,10 +17,13 @@
         "xmachine": "^0.0.6"
     },
     "scripts": {
-        "start": "react-scripts-ts start",
+        "client": "react-scripts-ts start",
+        "server": "nodemon src/server/server",
         "build": "react-scripts-ts build",
         "test": "react-scripts-ts test --env=jsdom",
-        "eject": "react-scripts-ts eject"
+        "eject": "react-scripts-ts eject",
+        "dev":
+            "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
     },
     "devDependencies": {
         "@types/jest": "^22.2.3",
