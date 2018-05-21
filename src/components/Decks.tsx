@@ -1,29 +1,32 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
 import { Card } from './Card';
+import allDecks from '../queries/decks';
+import { Query } from 'react-apollo';
 
-export default class Decks extends React.Component {
-    public render() {
-        return (
-            <>
-                <Route
-                    exact={true}
-                    path="/decks"
-                    render={() => (
-                        <>
-                            <h1>Decks</h1>
-                            <div className="row">
-                                <Card title="JS" description="... JS ..." />
-                                <Card
-                                    title="ReactJS"
-                                    description="... React ..."
-                                />
-                            </div>
-                        </>
-                    )}
-                />
-                <Route path="/decks/add" render={() => <h1>Add deck</h1>} />
-            </>
-        );
-    }
-}
+const Decks = () => (
+    <Query query={allDecks}>
+        {({ loading, error, data }) => {
+            return (
+                <>
+                    <h1>Decks</h1>
+                    <div className="row">
+                        {data.decks &&
+                            data.decks.map(
+                                (deck: {
+                                    title: string;
+                                    description: string;
+                                }) => (
+                                    <Card
+                                        title={deck.title}
+                                        description={deck.description}
+                                    />
+                                )
+                            )}
+                    </div>
+                </>
+            );
+        }}
+    </Query>
+);
+
+export default Decks;

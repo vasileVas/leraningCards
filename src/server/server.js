@@ -4,8 +4,11 @@ const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 const MONGO_URL = 'mongodb://radu:radu@ds227740.mlab.com:27740/learning-cards';
 if (!MONGO_URL) {
